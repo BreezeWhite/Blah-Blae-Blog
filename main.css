@@ -1,0 +1,80 @@
+
+body {
+  background: #e7e5e8;
+}
+
+
+.blog-posts{
+  max-width: 640px;
+}
+
+
+.mdl-layout__drawer .mdl-navigation__link {
+  font-family: 'Gudea', sans-serif;
+}
+.mdl-layout__drawer-button .material-icons {
+  color: white;
+}
+
+.mdl-card .mdl-card__title {
+  cursor: pointer;
+  padding: 24px;
+}
+.mdl-card a {
+  text-decoration: none;
+}
+
+.mdl-card--image-play {
+  background: url("./pics/play.png") center / cover;
+  min-height: 180px;
+  font-family: 'Gloria Hallelujah', cursive;
+  color: black;
+  text-shadow: 1px 1px 2px white;
+}
+.mdl-card--image-statistics {
+  background: url("./pics/statistics.png") center / cover;
+  min-height: 180px;
+  font-family: 'Comfortaa', cursive;
+  text-shadow: 1px 1px 2px grey;
+}
+.mdl-card--image-cash-flow {
+  background: url("./pics/cash-flow.jpg") center / cover;
+  min-height: 180px;
+  font-family: "Inconsolata", monospace;
+  color: white;
+  text-shadow: 1px 1px 5px black;
+}
+.mdl-card--image-chat {
+  background: url("./pics/chat.jpg") center / cover;
+  font-family: "Unkempt", cursive;
+  text-shadow: 1px 1px 2px black;
+  color: white;
+}
+
+a.no-deco{
+  text-decoration: none;
+  color: inherit;
+}
+
+i.material-icons {
+  margin: 25% 0;
+  color: grey;
+}
+
+.drawer-title {
+  margin-left: 10%;
+  position: absolute;
+  bottom: 1px;
+  font-size: 24px;
+  font-family: 'Righteous', cursive;
+}
+.drawer-title-apperence {
+  height: 100px;
+  background: #99efff;
+}
+
+#login_btn:hover {
+  cursor: pointer;
+}
+  
+  

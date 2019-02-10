@@ -25,27 +25,27 @@ body {
 }
 
 .mdl-card--image-play {
-  background: url("./pics/play.png") center / cover;
+  background: url("../pics/play.png") center / cover;
   min-height: 180px;
   font-family: 'Gloria Hallelujah', cursive;
   color: black;
   text-shadow: 1px 1px 2px white;
 }
 .mdl-card--image-statistics {
-  background: url("./pics/statistics.png") center / cover;
+  background: url("../pics/statistics.png") center / cover;
   min-height: 180px;
   font-family: 'Comfortaa', cursive;
   text-shadow: 1px 1px 2px grey;
 }
 .mdl-card--image-cash-flow {
-  background: url("./pics/cash-flow.jpg") center / cover;
+  background: url("../pics/cash-flow.jpg") center / cover;
   min-height: 180px;
   font-family: "Inconsolata", monospace;
   color: white;
   text-shadow: 1px 1px 5px black;
 }
 .mdl-card--image-chat {
-  background: url("./pics/chat.jpg") center / cover;
+  background: url("../pics/chat.jpg") center / cover;
   font-family: "Unkempt", cursive;
   text-shadow: 1px 1px 2px black;
   color: white;
@@ -75,6 +75,16 @@ i.material-icons {
 
 #login_btn:hover {
   cursor: pointer;
+}
+
+dialog {
+  top: 90px;
+}
+.remind-alert-section {
+  z-index: 100002;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
 }
   
   

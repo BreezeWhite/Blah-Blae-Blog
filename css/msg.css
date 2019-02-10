@@ -1,0 +1,26 @@
+
+.myfont {
+  font-size: 40px;
+  font-family: "Gloria Hallelujah", cursive;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 5px solid;
+  border-bottom-color: #ff3582;
+  border-bottom-right-radius: 1.5em 0.5em;
+  border-bottom-left-radius: 1.5em 0.5em;
+}
+
+.btn-add-apperence {
+  background: #b7dbff;
+  font-family: "Nova Square", cursive;
+  color: #346d91;
+}
+
+.mdl-grid.center-items {
+  justify-content: center;
+}
+
+.mdl-grid form {
+  max-width: 400px;
+  border-left: thick double #32a1ce;
+}

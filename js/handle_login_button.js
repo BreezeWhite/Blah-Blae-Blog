@@ -25,6 +25,6 @@ function handleLoginButton() {
   }
 }
 
-window.onload = function(){
+function RegisterLogin(){
   document.getElementById("login_btn").addEventListener('click', handleLoginButton);
 }

@@ -80,6 +80,9 @@ i.material-icons {
 dialog {
   top: 90px;
 }
+dialog + .backdrop {
+  position: inherit;
+}
 .remind-alert-section {
   z-index: 100002;
   position: -webkit-sticky;

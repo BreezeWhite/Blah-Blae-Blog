@@ -27,7 +27,7 @@
   <script src="js/firebase_init.js"></script>
   <script src="js/handle_login_button.js"></script>
   <script>
-    var t_snapshot;
+    var lastUid = -1;
     window.onload = function() {
       // Register event to login button inside header.
       RegisterLogin();
@@ -41,20 +41,23 @@
         }
       }); 
       
-      // Load imsgs from database.
+      // Load imsgs from database and listen for changes.
       var IMsgPool = firebase.firestore().collection("IMsg_Big_Pools");
-      IMsgPool.orderBy("time").limit(100).get()
-        .then(function(docsRef) {
-          //addIMsg(docsRef.docs);
-          return 0;
-        });
-      // Listen for real time update
-      
-      IMsgPool.orderBy("time").limit(100).onSnapshot(function(snapshot) {
-        console.log("entered");
+      var query = IMsgPool.orderBy("time").limit(100);
+      query.onSnapshot(function(snapshot) {
         t_snapshot = snapshot;
-        handleRealTimeIMsg(snapshot);
+        lastUid  = handleRealTimeIMsg(snapshot, lastUid);
+        
+        
+        var elem = document.getElementById("imsg_pool");
+        var chips = elem.querySelectorAll(".mdl-chip");
+        chips.forEach(function(node){
+          if (node.scrollHeight > node.clientHeight) {
+            node.setAttribute("style", "height:"+node.scrollHeight+"px;");
+            node.style.height = node.scrollHeight+"px";
+          }
         });
+      });
     };
   </script>
   
@@ -139,18 +142,17 @@
       </script>
     </div>
     
-  <div class="imsg-pool" id="imsg_pool"></div>
+  <div class="hide"><div class="imsg-pool" id="imsg_pool"></div></div>
   <script>
-    function handleRealTimeIMsg(snapshot) {
+    function handleRealTimeIMsg(snapshot, lastUid) {
       var docChanges = snapshot.docChanges();
       for (var i=0, len=docChanges.length; i<len; i+=1){
         docChanges[i] = docChanges[i].doc;
       }
-      addIMsg(docChanges);
-      return 0;
+      return addIMsg(docChanges, lastUid);
     }
     
-    function addIMsg(docs) {
+    function addIMsg(docs, lastUid) {
       var curLoginUid = (user=firebase.auth().currentUser) ? user.uid : "nobody";
       var lastUid = -1;
       var pool = $("#imsg_pool");
@@ -168,10 +170,10 @@
           $(curGrid).prependTo( $(pool) );
           curGridId += 1;
         }
-        
-        $(chip_style(imsg)).prependTo($(`#grid-${curGridId-1}`));
+        var chip = $(chip_style(imsg)).prependTo($(`#grid-${curGridId-1}`));
         lastUid = uid;
       }
+      return lastUid;
     }  
       
     function chip_style(msg) {
@@ -181,6 +183,7 @@
             <div class="mdl-chip__text"> ${msg} </div>
           </span>
         </div>
+        <div class="newline-spacer"></div>
       `;
     }
   </script>

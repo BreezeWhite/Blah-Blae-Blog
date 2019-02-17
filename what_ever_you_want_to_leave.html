@@ -43,22 +43,37 @@
       
       // Load imsgs from database and listen for changes.
       var IMsgPool = firebase.firestore().collection("IMsg_Big_Pools");
-      var query = IMsgPool.orderBy("time").limit(100);
+      var query = IMsgPool.limit(100);
       query.onSnapshot(function(snapshot) {
         t_snapshot = snapshot;
         lastUid  = handleRealTimeIMsg(snapshot, lastUid);
         
+        resizeChip();
         
-        var elem = document.getElementById("imsg_pool");
-        var chips = elem.querySelectorAll(".mdl-chip");
-        chips.forEach(function(node){
-          if (node.scrollHeight > node.clientHeight) {
-            node.setAttribute("style", "height:"+node.scrollHeight+"px;");
-            node.style.height = node.scrollHeight+"px";
-          }
-        });
       });
     };
+    window.addEventListener("resize", function() {
+      resizeChip();
+    }, true);
+    
+    function resizeChip(){
+      var elem = document.getElementById("imsg_pool");
+      var chips = elem.querySelectorAll(".mdl-chip");
+      chips.forEach(function(node){
+        if (node.scrollHeight > node.clientHeight) {
+          node.setAttribute("style", "height:"+node.scrollHeight+"px;");
+          node.style.height = node.scrollHeight+"px";
+        }
+        else{
+          var textH = node.children[0].clientHeight
+          if (node.clientHeight > textH) {
+            node.setAttribute("style", "height:"+node.scrollHeight+"px;");
+            node.style.height = textH+"px";
+          }
+          
+        }
+      });
+    }
   </script>
   
 </head>
@@ -153,8 +168,10 @@
     }
     
     function addIMsg(docs, lastUid) {
+      docs.sort(function(a, b) { return new Date(a.get("time")) - new Date(b.get("time")); });
+      
       var curLoginUid = (user=firebase.auth().currentUser) ? user.uid : "nobody";
-      var lastUid = -1;
+      //var lastUid = -1;
       var pool = $("#imsg_pool");
       var curGridId = pool.children().length;
       for (var i=0, len=docs.length; i<len; i+=1){

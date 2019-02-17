@@ -41,13 +41,13 @@
   overflow: hidden;
   max-width: 800px;
   flex: 1 1 auto;
-  margin-bottom: 1%;
+  margin: 1%;
   border-radius: 8% / 10%;
   border-left: 10px ridge #6bd0d6;
   border-right: 10px ridge #6bd0d6;
+  background: rgba(255, 255, 255, 0.5);
 }
 .imsg-pool {
-  background: rgba(255, 255, 255, 0.5);
   height: 100%;
   width: 100%;
   overflow-y: auto;
@@ -60,10 +60,6 @@
 
 .mdl-grid .imsg{
   max-width: 80%;
-}
-.mdl-grid .imsg .mdl-chip{
-  width: 100%;
-  overflow: auto;
 }
 .imsg .mdl-chip .mdl-chip__text {
   overflow-x: auto;

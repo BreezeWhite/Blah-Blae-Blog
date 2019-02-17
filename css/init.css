@@ -1,0 +1,29 @@
+ body {
+  background: #e7e5e8;
+}
+a.no-deco{
+  text-decoration: none;
+  color: inherit;
+}
+
+.mdl-layout__drawer .mdl-navigation__link {
+  font-family: 'Gudea', sans-serif;
+}
+.mdl-layout__drawer-button .material-icons {
+  color: white;
+}
+.drawer-title {
+  margin-left: 10%;
+  position: absolute;
+  bottom: 1px;
+  font-size: 24px;
+  font-family: 'Righteous', cursive;
+}
+.drawer-title-apperence {
+  height: 100px;
+  background: #99efff;
+}
+
+#login_btn:hover {
+  cursor: pointer;
+}

@@ -1,7 +1,4 @@
 
-body {
-  background: #e7e5e8;
-}
 
 
 .blog-posts{
@@ -9,12 +6,7 @@ body {
 }
 
 
-.mdl-layout__drawer .mdl-navigation__link {
-  font-family: 'Gudea', sans-serif;
-}
-.mdl-layout__drawer-button .material-icons {
-  color: white;
-}
+
 
 .mdl-card .mdl-card__title {
   cursor: pointer;
@@ -51,31 +43,14 @@ body {
   color: white;
 }
 
-a.no-deco{
-  text-decoration: none;
-  color: inherit;
-}
+
 
 i.material-icons {
   margin: 25% 0;
   color: grey;
 }
 
-.drawer-title {
-  margin-left: 10%;
-  position: absolute;
-  bottom: 1px;
-  font-size: 24px;
-  font-family: 'Righteous', cursive;
-}
-.drawer-title-apperence {
-  height: 100px;
-  background: #99efff;
-}
 
-#login_btn:hover {
-  cursor: pointer;
-}
 
 dialog {
   top: 90px;

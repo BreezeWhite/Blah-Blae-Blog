@@ -1,0 +1,37 @@
+a.mdl-navigation__link {
+  font-size: 16px;
+}
+
+#profile-section {
+  padding-left: 25px;
+}
+
+.profile-section h3 {
+  font-family: "Quicksand", sans-serif; 
+}
+#section-selector a.is-active {
+  background: #dddddd;
+}
+
+
+
+/* Fade-in effect according to here: https://stackoverflow.com/questions/11679567/using-css-for-fade-in-effect-on-page-load */
+.profile-section section {
+  -webkit-animation: fadein 0.8s;
+     -moz-animation: fadein 0.8s;
+          animation: fadein 0.8s;
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

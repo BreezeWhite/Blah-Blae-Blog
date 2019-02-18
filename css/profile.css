@@ -2,21 +2,74 @@ a.mdl-navigation__link {
   font-size: 16px;
 }
 
-#profile-section {
+.profile-section {
+  display: inline-block;
+  vertical-align: top;
   padding-left: 25px;
+  -webkit-flex-grow: 1;
+  ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .profile-section h3 {
   font-family: "Quicksand", sans-serif; 
 }
-#section-selector a.is-active {
-  background: #dddddd;
+
+
+.blah-drawer {
+  background: white;
+  display: inline-block;
+  width: 200px;
+  min-height: 1000px;
+  padding: 24px 0;
+  flex-direction: column;
+  -webkit-flex-shrink: 0;
+      -ms-flex-shrink: 0;
+          flex-shrink: 0;
+  z-index: 1;
+}
+.blah-drawer a {
+  text-decoration: none;
+  color: #8c8c8c;
+  font-size: 16px;
+}
+.blah-drawer a.is-active {
+  color: #ff8e68;
+}
+.blah-drawer .blah-link {
+  position: relative;
+  min-height: 20px;
+  display: table;
+  line-height: 48px;
+  margin: 16px;
+  padding-left: 10px;
+  width: 80%;
 }
 
+
+.info-section ul {
+  border-left: 5px groove;
+  padding: 1px 0px;
+}
+.info-section ul li:first-child {
+  padding-top: 0px;
+}
+.info-section ul li:last-child {
+  padding-bottom: 0px;
+}
+.info-section li {
+  min-height: 20px;
+  
+}
+.info-section li span {
+  padding: 5px 16px;
+  border-left: 4px solid #0ed381;
+}
 
 
 /* Fade-in effect according to here: https://stackoverflow.com/questions/11679567/using-css-for-fade-in-effect-on-page-load */
 .profile-section section {
+  display: block;
   -webkit-animation: fadein 0.8s;
      -moz-animation: fadein 0.8s;
           animation: fadein 0.8s;

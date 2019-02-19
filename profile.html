@@ -103,55 +103,65 @@
   </header>
   
   <main class="mdl-layout__content">
-    <div class="mdl-layout--large-screen-only" style="padding-top: 50px;"></div>
-    <div class="mdl-layout--small-screen-only" style="padding-top: 20px;"></div>
     
-    <div class="mdl-grid">
-      <div class="mdl-layout--fixed-drawer mdl-cell mdl-cell--2-col">
-        <div class="mdl-layout__drawer" id="section-selector">
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="#intro"> Introduction </a>
-            <a class="mdl-navigation__link" href="#info"> Basic Info </a>
-            <a class="mdl-navigation__link" href="#skill"> Skills </a>
-            <a class="mdl-navigation__link" href="#exp"> Expierence </a>
-            <a class="mdl-navigation__link" href="#intrs"> Interests </a>
-          </nav>
-        </div>
-      </div>
+    <div class="mdl-grid mdl-grid--no-spacing">
+      <div class="mdl-cell mdl-cell--12-col">
+        <aside class="blah-drawer mdl-shadow--2dp" id="section-selector">
+          <a class="blah-link" href="#intro"> Introduction </a>
+          <a class="blah-link" href="#info"> Basic Info </a>
+          <a class="blah-link" href="#skill"> Skills </a>
+          <a class="blah-link" href="#exp"> Expierence </a>
+          <a class="blah-link" href="#intrs"> Interests </a>
+        </aside>
     
-      <main class="profile-section mdl-cell mdl-cell--10-col" id="profile-section">
-        <section class="mdl-grid" id="intro">
-          <div class="mdl-cell mdl-cell--10-col">
-            <h3> Introduction </h3>
-            <p> Oh Oh OOOOHHHHHHHH!!!</p>
-          </div>
-        </section>
-        <section class="mdl-grid" id="info">
-          <div class="mdl-cell mdl-cell--12-col">
-            <h3> Basic Info </h3>
-            <p> Hi</p>
-          </div>
-        </section>
-        <section class="mdl-grid" id="skill">
-          <div class="mdl-cell mdl-cell--12-col">
-            <h3> Skills </h3>
-            <p> Programming</p>
-          </div>
-        </section>
-        <section class="mdl-grid" id="exp">
-          <div class="mdl-cell mdl-cell--12-col">
-            <h3> Experience </h3>
-            <p> Student</p>
-          </div>
-        </section>
-        <section class="mdl-grid" id="intrs">
-          <div class="mdl-cell mdl-cell--12-col">
-            <h3> Interests </h3>
-            <p> Play</p>
-          </div>
-        </section>
-      </main>
+        <main class="profile-section" id="profile-section">
+          <section class="mdl-grid" id="intro">
+            <div class="mdl-cell mdl-cell--10-col">
+              <h3> Introduction </h3>
+              <p> Oh Oh OOOOHHHHHHHH!!!</p>
+            </div>
+          </section>
+          <section class="mdl-grid info-section" id="info">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h3> Basic Info </h3>
+              <ul class="mdl-list">
+                <li class="mdl-list__item"> 
+                  <span class="mdl-list__item-primary-content"> Taiwan / Taipei </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> NTNU, Sinica, Blay</span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> Boy / Tall / Moderate / &nbsp <b> HANDSOME </b></span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> Volleyball, Piano, Walk around, Daze</span>
+                </li>
+              </ul>
+              
+            </div>
+          </section>
+          <section class="mdl-grid" id="skill">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h3> Skills </h3>
+              <p> Programming</p>
+            </div>
+          </section>
+          <section class="mdl-grid" id="exp">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h3> Experience </h3>
+              <p> Student</p>
+            </div>
+          </section>
+          <section class="mdl-grid" id="intrs">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h3> Interests </h3>
+              <p> Play</p>
+            </div>
+          </section>
+        </main>
         
+      </div>
     </div>
   </main>
   

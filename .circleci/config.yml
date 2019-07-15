@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
 orbs:
   aws-s3: circleci/aws-s3@1.0.11
   
@@ -37,8 +37,9 @@ jobs:
       #    key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - aws-s3/copy:
-          from: ./*
+      - run: ls; pwd
+      - aws-s3/sync:
+          from: ./
           to: 's3://blah-blae-blog.cc'
           
       #- run: yarn test

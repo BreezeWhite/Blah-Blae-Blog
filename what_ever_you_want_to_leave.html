@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="css/init.css">
   <link rel="stylesheet" href="css/msg.css">
-  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Nova+Square|Righteous" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Gudea|Gloria+Hallelujah|Nova+Square|Righteous" rel="stylesheet"> 
   
   
   
@@ -29,6 +29,7 @@
   <script>
     var lastUid = -1;
     window.onload = function() {
+      
       // Register event to login button inside header.
       RegisterLogin();
       
@@ -78,10 +79,14 @@
   
 </head>
 <body>
+
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header mdl-layout__header--waterfall mdl-color--blue-700">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title mdl-color-text--white"><a href="index.html" class="no-deco"> Blah Blae Blog </a></span>
+      <span class="mdl-layout-title mdl-color-text--white">
+        <a href="index.html" class="no-deco" id="header-title"> Blah Blae Blog </a>
+      </span>
       <div class="mdl-layout-spacer"></div>
       
       <nav class="mdl-navigation">
@@ -90,121 +95,131 @@
       
     </div>
   </header>
-  <div class="mdl-layout__drawer">
+  <div class="mdl-layout__drawer" id="section-selector">
     <span class="mdl-layout-title drawer-title-apperence"> 
-      <p class="drawer-title"> About Me </p>
+      <p class="drawer-title" id="drawer-title"></p>
     </span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href=""> Introduction </a>
-      <a class="mdl-navigation__link" href=""> Basic Info </a>
-      <a class="mdl-navigation__link" href=""> Skills </a>
-      <a class="mdl-navigation__link" href=""> Expierence </a>
-      <a class="mdl-navigation__link" href=""> Interests </a>
-      
+    <nav class="mdl-navigation" id="header-drawer-items">
+      <!--a class="mdl-navigation__link" href="intro"> Introduction </a>
+      <a class="mdl-navigation__link" href="info"> Basic Info </a>
+      <a class="mdl-navigation__link" href="skill"> Skills </a>
+      <a class="mdl-navigation__link" href="exp"> Expierence </a>
+      <a class="mdl-navigation__link" href="intrs"> Interests </a-->
     </nav>
   </div>
+  <script src="js/header.js"></script>
   
   <main class="mdl-layout__content mdl-cell--middle box">
     <div class="mdl-layout--large-screen-only" style="padding-top: 50px;"></div>
     <div class="mdl-layout--small-screen-only" style="padding-top: 20px;"></div>
     
     <div class="mdl-grid center-items">
-      <div class="myfont"> WA HAHAHAHA </div>
-      <form action="#" class="mdl-cell mdl-cell--12-col mdl-grid center-items">
-        <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col" id="test">
-          <input class="mdl-textfield__input" type="text" id="imsg">
-          <label class="mdl-textfield__label" for="imsg">Leave whatever you want~</label>
-        </div>
-        
-        <button class="mdl-button mdl-js-button btn-add-apperence mdl-cell mel-cell--4-col" id="leave-imsg-btn">
-          LEAVE
-        </button>
-        
-      </form>
-      <script>
-        function leave_imsg(event){
-          var imsg = document.getElementById("imsg").value;
-          if (imsg == "") return;
+      <div class="mdl-cell mdl-cell--12-col mdl-grid">
+        <div class="mdl-layout-spacer"></div>
+        <div class="myfont"> WA HAHAHAHA </div>
+        <div class="mdl-layout-spacer"></div>
+      </div>
+      
+      <div class="mdl-cell mdl-cell--12-col mdl-grid">
+        <div class="mdl-layout-spacer"></div>
+        <form action="#" class="mdl-cell mdl-cell--12-col mdl-grid center-items">
+          <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col" id="test">
+            <input class="mdl-textfield__input" type="text" id="imsg">
+            <label class="mdl-textfield__label" for="imsg">Leave whatever you want~</label>
+          </div>
           
-          var user = firebase.auth().currentUser;
-          var uid = "Custom";
-          var email = "None";
-          if (user) {
-            uid = user.uid;
-            email = user.email;
+          <button class="mdl-button mdl-js-button btn-add-apperence mdl-cell mel-cell--4-col" id="leave-imsg-btn">
+            LEAVE
+          </button>
+        </form>
+        <script>
+          function leave_imsg(event){
+            var imsg = document.getElementById("imsg").value;
+            if (imsg == "") return;
+            
+            var user = firebase.auth().currentUser;
+            var uid = "Custom";
+            var email = "None";
+            if (user) {
+              uid = user.uid;
+              email = user.email;
+            }
+            
+            var tt = new Date(Date.now()).toUTCString();
+            
+            var db = firebase.firestore();
+            db.collection("IMsg_Big_Pools").add({
+              imsg: imsg,
+              time: tt,
+              uid: uid,
+              email: email
+            })
+            .then(function(docRef) {
+              console.log("Successfully add a new imsg. Doc ref id:", docRef.id);
+              var imsg = $("#imsg");
+              imsg.val("");
+              imsg.parent().removeClass("is-dirty");
+            })
+            .catch(function(err) {
+              console.error("Oh no... Fail to add new item class: ", err);
+            });
+            
           }
+        </script>
+        <div class="mdl-layout-spacer"></div>
+      </div>
+    
+    
+      <div class="mdl-cell mdl-cell--12-col hide">
+        <div class="imsg-pool" id="imsg_pool"></div>
+      </div>
+      <script>
+        function handleRealTimeIMsg(snapshot, lastUid) {
+          var docChanges = snapshot.docChanges();
+          for (var i=0, len=docChanges.length; i<len; i+=1){
+            docChanges[i] = docChanges[i].doc;
+          }
+          return addIMsg(docChanges, lastUid);
+        }
+        
+        function addIMsg(docs, lastUid) {
+          docs.sort(function(a, b) { return new Date(a.get("time")) - new Date(b.get("time")); });
           
-          var tt = new Date(Date.now()).toUTCString();
+          var curLoginUid = (user=firebase.auth().currentUser) ? user.uid : "nobody";
+          //var lastUid = -1;
+          var pool = $("#imsg_pool");
+          var curGridId = pool.children().length;
+          for (var i=0, len=docs.length; i<len; i+=1){
+            var doc = docs[i];
+            var uid = doc.get("uid");
+            var imsg = doc.get("imsg");
+            
+            if (lastUid != uid) {
+              var curGrid = `<div class='mdl-grid' id="grid-${curGridId}"></div>`;
+              if (curLoginUid == uid){
+                curGrid = $(curGrid).addClass("grid-align-right");
+              }
+              $(curGrid).prependTo( $(pool) );
+              curGridId += 1;
+            }
+            var chip = $(chip_style(imsg)).prependTo($(`#grid-${curGridId-1}`));
+            lastUid = uid;
+          }
+          return lastUid;
+        }  
           
-          var db = firebase.firestore();
-          db.collection("IMsg_Big_Pools").add({
-            imsg: imsg,
-            time: tt,
-            uid: uid,
-            email: email
-          })
-          .then(function(docRef) {
-            console.log("Successfully add a new imsg. Doc ref id:", docRef.id);
-            var imsg = $("#imsg");
-            imsg.val("");
-            imsg.parent().removeClass("is-dirty");
-          })
-          .catch(function(err) {
-            console.error("Oh no... Fail to add new item class: ", err);
-          });
-          
+        function chip_style(msg) {
+          return `
+            <div class='imsg'>
+              <span class="mdl-chip"> 
+                <div class="mdl-chip__text"> ${msg} </div>
+              </span>
+            </div>
+            <div class="newline-spacer"></div>
+          `;
         }
       </script>
     </div>
-    
-  <div class="hide"><div class="imsg-pool" id="imsg_pool"></div></div>
-  <script>
-    function handleRealTimeIMsg(snapshot, lastUid) {
-      var docChanges = snapshot.docChanges();
-      for (var i=0, len=docChanges.length; i<len; i+=1){
-        docChanges[i] = docChanges[i].doc;
-      }
-      return addIMsg(docChanges, lastUid);
-    }
-    
-    function addIMsg(docs, lastUid) {
-      docs.sort(function(a, b) { return new Date(a.get("time")) - new Date(b.get("time")); });
-      
-      var curLoginUid = (user=firebase.auth().currentUser) ? user.uid : "nobody";
-      //var lastUid = -1;
-      var pool = $("#imsg_pool");
-      var curGridId = pool.children().length;
-      for (var i=0, len=docs.length; i<len; i+=1){
-        var doc = docs[i];
-        var uid = doc.get("uid");
-        var imsg = doc.get("imsg");
-        
-        if (lastUid != uid) {
-          var curGrid = `<div class='mdl-grid' id="grid-${curGridId}"></div>`;
-          if (curLoginUid == uid){
-            curGrid = $(curGrid).addClass("grid-align-right");
-          }
-          $(curGrid).prependTo( $(pool) );
-          curGridId += 1;
-        }
-        var chip = $(chip_style(imsg)).prependTo($(`#grid-${curGridId-1}`));
-        lastUid = uid;
-      }
-      return lastUid;
-    }  
-      
-    function chip_style(msg) {
-      return `
-        <div class='imsg'>
-          <span class="mdl-chip"> 
-            <div class="mdl-chip__text"> ${msg} </div>
-          </span>
-        </div>
-        <div class="newline-spacer"></div>
-      `;
-    }
-  </script>
-
 
 
 

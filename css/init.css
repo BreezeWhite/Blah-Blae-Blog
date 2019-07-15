@@ -1,4 +1,5 @@
- body {
+
+body {
   background: #e7e5e8;
 }
 a.no-deco{
@@ -8,6 +9,8 @@ a.no-deco{
 
 .mdl-layout__drawer .mdl-navigation__link {
   font-family: 'Gudea', sans-serif;
+  font-size: 16px;
+  margin: 9px 0;
 }
 .mdl-layout__drawer-button .material-icons {
   color: white;

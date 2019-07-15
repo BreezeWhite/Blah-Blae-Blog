@@ -2,7 +2,6 @@
 .myfont {
   font-size: 40px;
   font-family: "Gloria Hallelujah", cursive;
-  margin-bottom: 40px;
   padding-bottom: 24px;
   border-bottom: 5px solid;
   border-bottom-color: #ff3582;
@@ -40,7 +39,7 @@
 .hide {
   overflow: hidden;
   max-width: 800px;
-  flex: 1 1 auto;
+  max-height: 400px;
   margin: 1%;
   border-radius: 8% / 10%;
   border-left: 10px ridge #6bd0d6;

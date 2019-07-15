@@ -3,20 +3,22 @@
 <meta charset=utf-8 />
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/ip_geo.js"></script>
-  <script>
-    
-    
-    function record(json){
-      console.log(json);
-    };
-    getIP(record);
-    
-    
-  </script>
+  
+  
+  <script src="https://wurfl.io/wurfl.js"></script>
   
 </head>
 <body>
-
+  <h1> This is device info: </h1>
+  <h3 id="device-info"></h3>
+  
+  <h1> This is user agent info: </h1>
+  <h3 id="user-agent"></h3>
 </body>
+<script>
+    console.log(WURFL);
+    document.getElementById("device-info").textContent = JSON.stringify(WURFL);
+    document.getElementById("user-agent").textContent = JSON.stringify(navigator.userAgent);
+    
+  </script>
 </html>

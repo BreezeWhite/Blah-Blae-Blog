@@ -27,7 +27,6 @@
     window.onload = function() {
       var url = new URL(document.URL);
       var tab = url.searchParams.get("tab");
-      console.log(tab);
       tab = tab ? tab : "intro";
       
       var profile = document.getElementById("profile-section");
@@ -105,8 +104,8 @@
   <main class="mdl-layout__content">
     
     <div class="mdl-grid mdl-grid--no-spacing">
-      <div class="mdl-cell mdl-cell--12-col">
-        <aside class="blah-drawer mdl-shadow--2dp" id="section-selector">
+      <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+        <aside class="blah-drawer mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp" id="section-selector">
           <a class="blah-link" href="#intro"> Introduction </a>
           <a class="blah-link" href="#info"> Basic Info </a>
           <a class="blah-link" href="#skill"> Skills </a>
@@ -114,14 +113,14 @@
           <a class="blah-link" href="#intrs"> Interests </a>
         </aside>
     
-        <main class="profile-section" id="profile-section">
+        <main class="profile-section mdl-cell mdl-cell--9-col" id="profile-section">
           <section class="mdl-grid" id="intro">
             <div class="mdl-cell mdl-cell--10-col">
               <h3> Introduction </h3>
-              <p> Oh Oh OOOOHHHHHHHH!!!</p>
+              <p> Oh Oh OOOOHHHHHHHH!!! </p>
             </div>
           </section>
-          <section class="mdl-grid info-section" id="info">
+          <section class="mdl-grid section-deco" id="info">
             <div class="mdl-cell mdl-cell--12-col">
               <h3> Basic Info </h3>
               <ul class="mdl-list">
@@ -135,28 +134,72 @@
                   <span class="mdl-list__item-primary-content"> Boy / Tall / Moderate / &nbsp <b> HANDSOME </b></span>
                 </li>
                 <li class="mdl-list__item">
-                  <span class="mdl-list__item-primary-content"> Volleyball, Piano, Walk around, Daze</span>
+                  <span class="mdl-list__item-primary-content"> Master Degree </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> Programmer / Engineer </span>
                 </li>
               </ul>
               
             </div>
           </section>
-          <section class="mdl-grid" id="skill">
+          <section class="mdl-grid section-deco" id="skill">
             <div class="mdl-cell mdl-cell--12-col">
               <h3> Skills </h3>
-              <p> Programming</p>
+              <ul class="mdl-list">
+                <!--h5 style="padding-left: 10px;"> Programming </h5-->
+                <li class="mdl-list__item">
+                  <span class=mdl-list__item-primary-content"> Python / C++ / Java </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class=mdl-list__item-primary-content"> ML / AI </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class=mdl-list__item-primary-content"> HTML / CSS / JavaScript </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class=mdl-list__item-primary-content"> AWS / Firebase </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class=mdl-list__item-primary-content"> Linux / Remote Working </span>
+                </li>
+              </ul>
+              
             </div>
           </section>
-          <section class="mdl-grid" id="exp">
+          <section class="mdl-grid section-deco" id="exp">
             <div class="mdl-cell mdl-cell--12-col">
               <h3> Experience </h3>
-              <p> Student</p>
+              <ul class="mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> Research Assistant of IIS, Sinica </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> Backend Intern Engineer of Blay </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> 
+                    One of the captains of &nbsp
+                    <a href="https://www.music-ir.org/mirex/wiki/MIREX_HOME" style="color: black;">
+                      MIREX 
+                    </a>
+                    &nbsp (2017, 2018) 
+                  </span>
+                </li>
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> Graduated from NTNU, CSIE (2018) </span>
+                </li>
+              </ul>
             </div>
           </section>
-          <section class="mdl-grid" id="intrs">
+          <section class="mdl-grid section-deco" id="intrs">
             <div class="mdl-cell mdl-cell--12-col">
               <h3> Interests </h3>
-              <p> Play</p>
+              <ul class="mdl-list">
+                <li class="mdl-list__item">
+                  <span class="mdl-list__item-primary-content"> Volleyball, Piano, Read, Programming, Walk around, Daze</span>
+                </li>
+              </ul>
             </div>
           </section>
         </main>

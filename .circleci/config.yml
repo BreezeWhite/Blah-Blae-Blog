@@ -42,4 +42,6 @@ jobs:
           from: ./
           to: 's3://blah-blae-blog.cc'
           
+          
+          
       #- run: yarn test
